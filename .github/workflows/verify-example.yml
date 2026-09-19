@@ -1,0 +1,32 @@
+name: Verify example backup
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify artifact
+        run: |
+          python kit/scripts/rpk_verify_backup.py \
+            --path examples/sample-backup.bin \
+            --max-age-hours 87600 \
+            --min-size-bytes 16 \
+            --json-out artifacts/verification.json
+      - name: Upload verification result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-result
+          path: artifacts/verification.json
+

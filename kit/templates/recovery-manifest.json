@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "service": "example-saas",
+  "owner": "platform@example.com",
+  "backup_provider": "replace-me",
+  "backup_location": "replace-me",
+  "backup_frequency": "hourly",
+  "encryption": "replace-me",
+  "immutability": false,
+  "offsite_copy": false,
+  "rpo_minutes": 60,
+  "rto_minutes": 120,
+  "last_restore_test": null,
+  "restore_target": "replace-me",
+  "notes": "Do not include credentials or backup contents."
+}
