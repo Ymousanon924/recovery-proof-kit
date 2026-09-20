@@ -1,7 +1,7 @@
 # Recovery Proof Kit
 
 [![Verify example backup](https://github.com/Ymousanon924/recovery-proof-kit/actions/workflows/verify-example.yml/badge.svg)](https://github.com/Ymousanon924/recovery-proof-kit/actions/workflows/verify-example.yml)
-[![Latest release](https://img.shields.io/github/v/release/Ymousanon924/recovery-proof-kit?display_name=tag)](https://github.com/Ymousanon924/recovery-proof-kit/releases)
+[![Latest tag](https://img.shields.io/github/v/tag/Ymousanon924/recovery-proof-kit)](https://github.com/Ymousanon924/recovery-proof-kit/tags)
 
 Recovery Proof Kit is a small, safety-first toolkit for proving that scheduled backups are fresh, intact, and usable.
 
