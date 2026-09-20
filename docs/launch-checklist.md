@@ -16,11 +16,11 @@
 - [x] No backup contents uploaded.
 - [x] Production restore is explicitly prohibited.
 - [x] Add a redacted sample customer report.
-- [ ] Add a support and issue-reporting address.
+- [x] Add a support and issue-reporting address.
 
 ## Distribution
 
-- [ ] Publish the free Community Edition repository.
+- [x] Publish the free Community Edition repository.
 - [ ] Create a one-page product landing page.
 - [ ] Contact 10 MSPs, 10 agencies, and 10 small SaaS teams.
 - [ ] Offer five $19 beta slots.

@@ -1,5 +1,8 @@
 # Recovery Proof Kit
 
+[![Verify example backup](https://github.com/Ymousanon924/recovery-proof-kit/actions/workflows/verify-example.yml/badge.svg)](https://github.com/Ymousanon924/recovery-proof-kit/actions/workflows/verify-example.yml)
+[![Latest release](https://img.shields.io/github/v/release/Ymousanon924/recovery-proof-kit?display_name=tag)](https://github.com/Ymousanon924/recovery-proof-kit/releases)
+
 Recovery Proof Kit is a small, safety-first toolkit for proving that scheduled backups are fresh, intact, and usable.
 
 The first release is intentionally a local, dependency-free starter kit. It does not copy, delete, restore, or upload customer data. It verifies backup artifacts, produces a machine-readable result, and can optionally send a heartbeat only after verification succeeds.
@@ -39,22 +42,20 @@ python .\kit\scripts\rpk_verify_backup.py `
 
 Exit code `0` means the checks passed. Exit code `1` means a check failed. Exit code `2` means the configuration or invocation was invalid.
 
-To test the example end-to-end:
+To test the example with a real digest calculated locally:
 
 ```powershell
+$expectedHash = (Get-FileHash .\examples\sample-backup.bin -Algorithm SHA256).Hash.ToLower()
+
 python .\kit\scripts\rpk_verify_backup.py `
   --path .\examples\sample-backup.bin `
   --max-age-hours 48 `
   --min-size-bytes 16 `
-  --sha256 4f4f6f1a8f3c9860a81ce3d8d7e264b88acb1e8b3b9ccf5c6f9b8b7e9d0e1a2 `
+  --sha256 $expectedHash `
   --json-out .\artifacts\verification.json
 ```
 
-The sample digest above is deliberately not the real digest; omit `--sha256` for the first run or calculate it with:
-
-```powershell
-(Get-FileHash .\examples\sample-backup.bin -Algorithm SHA256).Hash.ToLower()
-```
+The command above calculates the expected digest from the local sample. The digest is never copied from a documentation example.
 
 Render a portable evidence report:
 
@@ -82,8 +83,14 @@ The design follows the principles of regular backup and restoration testing, off
 4. Add signed, client-ready reports.
 5. Add a small hosted heartbeat/reporting service only after users request it.
 
-## Beta pricing
+## Development status
+
+This repository is an early beta, currently released as `v0.1.0`. The free Community Edition is the primary product. The project is being validated with operators before larger integrations or hosted features are built. See [CONTRIBUTING.md](CONTRIBUTING.md), [CHANGELOG.md](CHANGELOG.md), and the [open issues](https://github.com/Ymousanon924/recovery-proof-kit/issues).
+
+## Optional guided help
 
 - Community Edition: free and self-serve.
-- Beta Edition: $19 with one setup walkthrough and one evidence report.
+- Beta Edition: $19 for one setup walkthrough and one evidence report.
 - Guided Pilot: $79 for hands-on implementation help.
+
+These are optional validation offers, not required for using the repository. No payment is required to inspect or run the Community Edition.
